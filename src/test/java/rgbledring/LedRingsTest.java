@@ -5,7 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 public class LedRingsTest {
+
 	private boolean[] leds;
+	private LedRing ledRing;
 
 	@Test
 	void testGivenRingOfSize2_whenLevelIsSetTo51_thenLED1And2AreOn() {
@@ -71,12 +73,11 @@ public class LedRingsTest {
 
 	private void givenLEDRingOfSize(int size) {
 		leds = new boolean[size];
+		ledRing = new LedRing(leds);
 	}
 
 	private void whenLevelIsSetTo(int level) {
-		for (int i = 0; i < leds.length; i++) {
-			leds[i] = level > 100 / leds.length * i;
-		}
+		ledRing.setLevel(level);
 	}
 
 }
