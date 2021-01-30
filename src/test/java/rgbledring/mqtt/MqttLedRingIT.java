@@ -11,7 +11,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import rgbledring.LedRing;
 import rgbledring.mqtt.MqttSender.Message;
 
 public class MqttLedRingIT {
@@ -19,12 +18,10 @@ public class MqttLedRingIT {
 	static final String MQTT_HOST = "test.mosquitto.org";
 	static final int MQTT_PORT = 1883;
 
-	boolean[] leds;
-	LedRing ledRing;
-	MqttSender mqttSender;
-
 	List<Message> messagesSent = new ArrayList<>();
 	MqttSender secondClient;
+
+	MqttLedRing sut;
 
 	@SuppressWarnings("resource")
 	@BeforeEach
@@ -34,8 +31,8 @@ public class MqttLedRingIT {
 
 	@AfterEach
 	void tearDown() throws IOException {
-		this.mqttSender.close();
 		this.secondClient.close();
+		this.sut.close();
 	}
 
 	@Test
@@ -55,20 +52,11 @@ public class MqttLedRingIT {
 	}
 
 	private void givenRingOfLeds(int leds) throws IOException {
-		this.leds = new boolean[leds];
-		this.ledRing = new LedRing(this.leds);
-		this.mqttSender = new MqttSender(MQTT_HOST, MQTT_PORT);
+		sut = new MqttLedRing(leds, new MqttSender(MQTT_HOST, MQTT_PORT));
 	}
 
 	private void whenLevelIsSetTo(int level) {
-		ledRing.setLevel(level);
-		for (int i = 0; i < this.leds.length; i++) {
-			mqttSender.publish(message("some/led/" + i + "/rgb", color(this.leds[i])));
-		}
-	}
-
-	private String color(boolean state) {
-		return state ? "#FFFFFF" : "#000000";
+		sut.setLevel(level);
 	}
 
 	private void thenMessagesWereSent(Message... messages) throws InterruptedException {
