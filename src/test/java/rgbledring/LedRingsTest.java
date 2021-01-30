@@ -1,6 +1,7 @@
 package rgbledring;
 
-import org.assertj.core.api.Assertions;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 
 public class LedRingsTest {
@@ -64,56 +65,18 @@ public class LedRingsTest {
 		thenLEDsAre(true, true, true, false);
 	}
 
-
 	private void thenLEDsAre(boolean... expected) {
-		Assertions.assertThat(leds).isEqualTo(expected);
+		assertThat(leds).isEqualTo(expected);
 	}
 
 	private void givenLEDRingOfSize(int size) {
 		leds = new boolean[size];
 	}
 
-	// 4 LEDs
-	//level = 80;
-	//
-	//(80 / 100) * 4 = Anzahl zu leuchtende LEDs
-	//
-	//int amountLEDsOn = (sliderLevel/maxSliderLevel) * leds.length;
-	//
 	private void whenLevelIsSetTo(int level) {
-//		int size = leds.length;
-//		int highestIndexToTurnOn = size * (level/100);
-//		for (int i = 0; i < leds.length; i++) {
-//			if (i/leds.length < level) {
-//				leds[i] = true;
-//			}
-//		}
-
-		if (level == 0) {
-			leds[0] = false;
-			leds[1] = false;
-			if (leds.length > 2) {
-				leds[2] = false;
-				leds[3] = false;
-			}
-		} else if (level > 0) {
-			leds[0] = true;
+		for (int i = 0; i < leds.length; i++) {
+			leds[i] = level > 100 / leds.length * i;
 		}
-		if (level > 50) {
-			leds[0] = true;
-			leds[1] = true;
-			if (leds.length > 2) {
-				leds[2] = true;
-				leds[3] = false;
-			}
-		}
-		if (level == 100 && leds.length > 2) {
-			leds[3] = true;
-		}
-
-
 	}
-
-
 
 }
