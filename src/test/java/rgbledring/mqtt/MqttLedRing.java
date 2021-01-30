@@ -21,6 +21,10 @@ public class MqttLedRing implements Closeable {
 
 	public void setLevel(int level) {
 		ledRing.setLevel(level);
+		sendStatesAsMqttMessages();
+	}
+
+	private void sendStatesAsMqttMessages() {
 		for (int i = 0; i < leds.length; i++) {
 			mqttSender.publish(message("some/led/" + i + "/rgb", color(leds[i])));
 		}
