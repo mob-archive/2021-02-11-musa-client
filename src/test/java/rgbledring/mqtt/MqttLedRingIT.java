@@ -1,11 +1,12 @@
 package rgbledring.mqtt;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.awaitility.Awaitility.await;
 import static rgbledring.mqtt.MqttSender.Message.message;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +19,7 @@ public class MqttLedRingIT {
 	static final String MQTT_HOST = "test.mosquitto.org";
 	static final int MQTT_PORT = 1883;
 
-	List<Message> messagesSent = new ArrayList<>();
+	List<Message> messagesSent = new CopyOnWriteArrayList<>();
 	MqttSender secondClient;
 
 	MqttLedRing sut;
@@ -59,8 +60,8 @@ public class MqttLedRingIT {
 		sut.setLevel(level);
 	}
 
-	private void thenMessagesWereSent(Message... messages) throws InterruptedException {
-		assertThat(messagesSent).containsExactly(messages);
+	private void thenMessagesWereSent(Message... messages) {
+		await().untilAsserted(() -> assertThat(messagesSent).containsExactly(messages));
 	}
 
 }
