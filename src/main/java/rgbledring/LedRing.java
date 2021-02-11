@@ -9,8 +9,9 @@ public class LedRing {
 	}
 
 	public void setLevel(int level) {
+		float percentPerLed = (100f / leds.length);
 		for (int i = 0; i < leds.length; i++) {
-			final float ledActivationLevel = ((100f / leds.length) * i);
+			final float ledActivationLevel = (percentPerLed * i);
 			leds[i] = level > ledActivationLevel;
 		}
 	}
