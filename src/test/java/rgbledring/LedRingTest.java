@@ -74,6 +74,7 @@ public class LedRingTest {
 	private void givenLEDRingOfSize(int size) {
 		leds = new boolean[size];
 		ledRing = new LedRing(leds);
+
 	}
 
 	private void whenLevelIsSetTo(int level) {
