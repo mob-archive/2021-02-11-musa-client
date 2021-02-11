@@ -1,6 +1,7 @@
 package rgbledring;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LedRing {
@@ -20,11 +21,7 @@ public class LedRing {
 
 	public LedRing(boolean[] leds) {
 		this.leds = leds;
-	}
-
-	public LedRing(int size)
-	{
-		this.ledList = new ArrayList<>(size);
+		ledList = new ArrayList<>();
 	}
 
 	public void setLevel(int level) {
@@ -32,6 +29,7 @@ public class LedRing {
 		for (int i = 0; i < ledList.size(); i++) {
 			final float ledActivationLevel = (percentPerLed * i);
             Led.Status currentLED = ledList.get(i);
+			leds[i] = level > ledActivationLevel;
             ledList.set(i, Led.Status.On);
             if (level > ledActivationLevel) {
 
