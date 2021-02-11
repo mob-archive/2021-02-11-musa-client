@@ -95,7 +95,6 @@ public class LedRingTest {
     }
 
     @Test
-    @Disabled
 	void testGivenRingOfSize16_whenLevelIsSetTo50_then8LEDsAreOn() {
     	givenLEDRingOfSize(16);
     	whenLevelIsSetTo(50);
