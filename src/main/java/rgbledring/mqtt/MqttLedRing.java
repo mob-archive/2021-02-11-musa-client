@@ -29,6 +29,8 @@ public class MqttLedRing implements Closeable {
 			mqttSender.publish(message("some/led/" + i + "/rgb", color(leds[i])));
 		}
 	}
+	
+	
 
 	private String color(boolean state) {
 		return state ? "#FFFFFF" : "#000000";
