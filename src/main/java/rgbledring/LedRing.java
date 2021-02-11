@@ -13,16 +13,10 @@ public class LedRing {
 			Off,
 		}
 
-		enum Color
-		{
-			Green,
-			Yellow,
-			Red,
-		}
 	}
 
-	private boolean[] leds;
-	private List<Led> ledList;
+	private List<Led.Status> ledList;
+    private boolean[] leds;
 
 	public LedRing(boolean[] leds) {
 		this.leds = leds;
@@ -30,14 +24,20 @@ public class LedRing {
 
 	public LedRing(int size)
 	{
-		this.ledList = new ArrayList<Led>(size);
+		this.ledList = new ArrayList<>(size);
 	}
 
 	public void setLevel(int level) {
-		float percentPerLed = (100f / leds.length);
-		for (int i = 0; i < leds.length; i++) {
+		float percentPerLed = (100f / ledList.size());
+		for (int i = 0; i < ledList.size(); i++) {
 			final float ledActivationLevel = (percentPerLed * i);
-			leds[i] = level > ledActivationLevel;
+            Led.Status currentLED = ledList.get(i);
+            ledList.set(i, Led.Status.On);
+            if (level > ledActivationLevel) {
+
+            }else {
+
+            }
 		}
 	}
 
