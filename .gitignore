@@ -60,6 +60,7 @@ tmp/
 local.properties
 .loadpath
 .factorypath
+.sts4-cache/
 
 ##############################
 ## NetBeans
