@@ -3,6 +3,8 @@ package rgbledring;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LedRingTest {
@@ -38,19 +40,6 @@ public class LedRingTest {
         thenLEDsAre(false, false, false, false);
     }
 
-    @DisplayName("test Given Ring of size 16 when Level is set to -> AllLEDsAre Off")
-    @Test
-    void testGivenRingOfSize16_whenLevelIsSetTo0_thenAllLEDsAreOff() {
-        givenLEDRingOfSize(16);
-        whenLevelIsSetTo(0);
-        thenLEDsAre(false, false, false, false,
-                false, false, false, false,
-                false, false, false, false,
-                false, false, false, false
-        );
-
-    }
-
     @Test
     void testGivenRingOfSize4_whenLevelIsSetTo51_thenOnlyLED4IsOff() {
         givenLEDRingOfSize(4);
@@ -81,7 +70,21 @@ public class LedRingTest {
         thenLEDsAre(true, true, true, false);
     }
 
+    @DisplayName("test Given Ring of size 16 when Level is set to -> AllLEDsAre Off")
+    @Test
+    void testGivenRingOfSize16_whenLevelIsSetTo0_thenAllLEDsAreOff() {
+        givenLEDRingOfSize(16);
+        whenLevelIsSetTo(0);
+        thenLEDsAreOnUntil(0 );
+    }
+
     private void thenLEDsAre(boolean... expected) {
+        assertThat(leds).isEqualTo(expected);
+    }
+
+    private void thenLEDsAreOnUntil(int ledPosition) {
+        boolean[] expected = new boolean[leds.length];
+        Arrays.fill(expected, 0, ledPosition, true);
         assertThat(leds).isEqualTo(expected);
     }
 
