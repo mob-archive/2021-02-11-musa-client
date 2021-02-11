@@ -25,17 +25,11 @@ public class LedRing {
 	}
 
 	public void setLevel(int level) {
-		float percentPerLed = (100f / ledList.size());
-		for (int i = 0; i < ledList.size(); i++) {
+		float percentPerLed = (100f / leds.length);
+		for (int i = 0; i < leds.length; i++) {
 			final float ledActivationLevel = (percentPerLed * i);
-            Led.Status currentLED = ledList.get(i);
-			leds[i] = level > ledActivationLevel;
-            ledList.set(i, Led.Status.On);
-            if (level > ledActivationLevel) {
-
-            }else {
-
-            }
+            leds[i] = level > ledActivationLevel;
+            
 		}
 	}
 
