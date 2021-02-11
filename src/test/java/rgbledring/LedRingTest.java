@@ -78,7 +78,7 @@ public class LedRingTest {
         thenLEDsAre(true, true, true, false);
     }
 
-    @DisplayName("test Given Ring of size 16 when Level is set to -> AllLEDsAre Off")
+    @DisplayName("Given Ring of size 16 when Level is set to 0 -> AllLEDsAre Off")
     @Test
     void testGivenRingOfSize16_whenLevelIsSetTo0_thenAllLEDsAreOff() {
         givenLEDRingOfSize(16);
@@ -86,7 +86,7 @@ public class LedRingTest {
         thenLEDsAreOnUntil(0);
     }
 
-    @DisplayName("test Given Ring of size 16 when Level is set to 50")
+    @DisplayName("Given Ring of size 16 when Level is set to 50")
     @Test
     void testGivenRingOfSize16_whenLevelIsSetTo50_then8LEDsAreOn() {
         givenLEDRingOfSize(16);
@@ -94,7 +94,7 @@ public class LedRingTest {
         thenLEDsAreOnUntil(8);
     }
 
-    @DisplayName("test Given Ring of size 16 when Level is set to -> AllLEDsAre On")
+    @DisplayName("Given Ring of size 16 when Level is set to -> AllLEDsAre On")
     @Test
     void testGivenRingOfSize16_whenLevelIsSetTo100_thenAllLEDsAreOn() {
         givenLEDRingOfSize(16);
@@ -102,7 +102,7 @@ public class LedRingTest {
         thenLEDsAreOnUntil(16);
     }
     
-    @DisplayName("test Given Ring of size 8 when Level is set to 50 -> first 4 LEDs are on")
+    @DisplayName("Given Ring of size 8 when Level is set to 50 -> first 4 LEDs are on")
     @Test
     void testGivenRingOfSize8_whenLevelIsSetTo50_thenFirst4LEDsAreOn() {
     	givenLEDRingOfSize(8);
