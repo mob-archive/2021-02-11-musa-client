@@ -92,7 +92,6 @@ public class LedRingTest {
     	givenLEDRingOfSize(8);
     	whenLevelIsSetTo(50);
     	thenLEDsAreOnUntil(4);
-    	//test
     }
 
     @Test
