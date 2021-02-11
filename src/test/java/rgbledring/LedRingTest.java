@@ -109,6 +109,13 @@ public class LedRingTest {
 		thenLEDsAreOnUntil(4);
 	}
 
+    @Test
+    void testGivenRing1OfSize2_andFlipped_whenLevelIsSetTo51_thenLED2IsOn() {
+        givenFlippedLEDRing1OfSize(2);
+        whenLevelIsSetTo(50);
+        thenLEDsAre(false, true);
+    }
+
 
     private void thenLEDsAre(boolean... expected) {
 		assertThat(leds).isEqualTo(expected);
@@ -126,6 +133,12 @@ public class LedRingTest {
 		ledRing = new LedRing(leds);
 
 	}
+
+    private void givenFlippedLEDRing1OfSize(int size) {
+        leds = new boolean[size];
+        ledRing = new LedRing(leds);
+        ledRing.flip();
+    }
 
 	private void whenLevelIsSetTo(int level) {
 		ledRing.setLevel(level);

@@ -7,6 +7,8 @@ public class LedRing {
 
     private boolean[] leds;
 
+    private boolean flipped = false;
+
 	public LedRing(boolean[] leds) {
 		this.leds = leds;
 	}
@@ -17,5 +19,9 @@ public class LedRing {
 			final float ledActivationLevel = (percentPerLed * i);
             leds[i] = level > ledActivationLevel;
 		}
+	}
+
+	public void flip() {
+		flipped = true;
 	}
 }
