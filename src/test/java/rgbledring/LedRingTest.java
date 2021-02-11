@@ -76,6 +76,7 @@ public class LedRingTest {
     void testGivenRingOfSize16_whenLevelIsSetTo0_thenAllLEDsAreOff() {
         givenLEDRingOfSize(16);
         whenLevelIsSetTo(0);
+        
         thenLEDsAreOnUntil(0 );
     }
 
