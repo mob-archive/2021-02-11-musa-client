@@ -78,6 +78,13 @@ public class LedRingTest {
         thenLEDsAreOnUntil(0 );
     }
 
+    @Test
+	void testGivenRingOfSize16_whenLevelIsSetTo50_then8LEDsAreOn() {
+    	givenLEDRingOfSize(16);
+    	whenLevelIsSetTo(50);
+    	thenLEDsAreOnUntil(8);
+	}
+
     private void thenLEDsAre(boolean... expected) {
         assertThat(leds).isEqualTo(expected);
     }
