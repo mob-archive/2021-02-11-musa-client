@@ -109,6 +109,7 @@ public class LedRingTest {
         boolean[] expected = new boolean[leds.length];
         Arrays.fill(expected, 0, ledPosition, true);
         assertThat(leds).isEqualTo(expected);
+
     }
 
 
