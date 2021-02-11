@@ -1,7 +1,6 @@
 package rgbledring;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LedRing {
@@ -22,6 +21,7 @@ public class LedRing {
 	public LedRing(boolean[] leds) {
 		this.leds = leds;
 		ledList = new ArrayList<>();
+		
 	}
 
 	public void setLevel(int level) {
