@@ -109,12 +109,11 @@ public class LedRingTest {
 		thenLEDsAreOnUntil(4);
 	}
 
-	@DisplayName("Given Ring of size 2 when Level is set to 50 and Direction is Set to Counterclockwise -> last LED is on")
 	@Test
-	void testGivenRingOfSize2_whenLevelIsSetTo50_andDirectionIsSetToCounterClockwise_thenLastLedIsOn() {
-		givenLEDRingOfSize(2);
+	void testToStringOfLedRing()
+	{
+		givenLEDRingOfSize(4);
 		whenLevelIsSetTo(50);
-		thenLEDsAre(false, true);
 	}
 
 	private void thenLEDsAre(boolean... expected) {
