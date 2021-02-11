@@ -36,6 +36,7 @@ public class MqttLedRingIT {
 		this.sut.close();
 	}
 
+
 	@Test
 	void whenTheLevelIsOneTheFirstLedIsOn() throws Exception {
 		givenRingOfLeds(8);
