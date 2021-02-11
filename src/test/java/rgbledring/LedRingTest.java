@@ -48,6 +48,7 @@ public class LedRingTest {
                 false, false, false, false,
                 false, false, false, false
         );
+
     }
 
     @Test
