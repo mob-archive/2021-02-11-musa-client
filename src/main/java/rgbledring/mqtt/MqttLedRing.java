@@ -15,7 +15,7 @@ public class MqttLedRing implements Closeable {
 
 	public MqttLedRing(int leds, MqttSender mqttSender) {
 		this.leds = new boolean[leds];
-		this.ledRing = new LedRing(this.leds);
+		this.ledRing = new LedRing(this.leds, false);
 		this.mqttSender = mqttSender;
 	}
 

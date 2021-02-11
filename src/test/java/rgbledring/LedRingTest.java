@@ -130,14 +130,13 @@ public class LedRingTest {
 
 	private void givenLEDRing1OfSize(int size) {
 		leds = new boolean[size];
-		ledRing = new LedRing(leds);
+		ledRing = new LedRing(leds, false);
 
 	}
 
     private void givenFlippedLEDRing1OfSize(int size) {
         leds = new boolean[size];
-        ledRing = new LedRing(leds);
-        ledRing.flip();
+        ledRing = new LedRing(leds, true);
     }
 
 	private void whenLevelIsSetTo(int level) {

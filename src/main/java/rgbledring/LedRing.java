@@ -1,16 +1,14 @@
 package rgbledring;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class LedRing {
 
     private boolean[] leds;
 
-    private boolean flipped = false;
+    private boolean flipped;
 
-	public LedRing(boolean[] leds) {
+	public LedRing(boolean[] leds, boolean flipped) {
 		this.leds = leds;
+		this.flipped = flipped;
 	}
 
 	public void setLevel(int level) {
@@ -19,9 +17,14 @@ public class LedRing {
 			final float ledActivationLevel = (percentPerLed * i);
             leds[i] = level > ledActivationLevel;
 		}
+		if (flipped) {
+			for (int i = 0; i < leds.length; i++) {
+				final float ledActivationLevel = (percentPerLed * i);
+				leds[leds.length - 1 - i] = level > ledActivationLevel;
+			}
+
+		}
+
 	}
 
-	public void flip() {
-		flipped = true;
-	}
 }
